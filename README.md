@@ -79,6 +79,55 @@
 
 - Open webbroser : my VM ip
 
+To prep the VM 
+
+# Preparing the server for the template
+
+- Connect webserver
+  
+      ls -l /etc/ssh
+      apt search cloud-init
+      sudo apt install cloud-init
+      cd /etc/ssh 
+      sudo rm ssh_host_*
+      ls -l
+      cat /etc/machine-id  
+      sudo truncate -s 0 /etc/machine-id
+      sudo ln -s /etc/machine-id /var/lib/dbus/machine-id
+      ls -l /var/lib/dbus/machine-id
+      cat /etc/machine-id
+      sudo apt clean
+      sudo apt autoremove
+      sudo poweroff
+
+# Create Template
+
+- Proxmox VM Right click " Convert to template "
+- select hadwere cd/dvd remove iso
+- secelet cloud init, edit user name and pass 
+- regenerate Image
+
+
+# Cloning VM
+
+- select Template right click Clone " Full Clone "
+- Create Webserver-1 and Webserver-2
+- Start Webserver-1
+- Connect Webserver-1
+
+      sudo nano /etc/hostname
+
+- rename webserver-1
+
+      sudo nano /etc/hosts
+
+- Change webserver to webserver-1
+
+      sudo reboot
+
+- Repeat this Webserver-2, use diferent name " webserver-2"
+
+
 
 
 
