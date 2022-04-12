@@ -100,7 +100,7 @@ To prep the VM
       sudo apt autoremove
       sudo poweroff
 
-# Create Template
+# Create VM Template
 
 - Proxmox VM Right click " Convert to template "
 - select hadwere cd/dvd remove iso
@@ -127,7 +127,62 @@ To prep the VM
 
 - Repeat this Webserver-2, use diferent name " webserver-2"
 
+# Create Container ( lxc )
+
+- select local storage / CT templates and downloads ubuntu 20.04
+- hostname " wwebserver_ct"
+- set pass
+- Template " ubuntu "
+- next, next
+- network IPv4 and IPv6 select DHCP
+- Next, Finish
+
+# Start Container
+
+- Right click new container, start
+- see a container soncole
+- user: root
+- give pass: " remember setup proc "
+- apt install apache2
+- prxomox primer concole, connect container ssh root@ ip 
+- give ssh " yes "
+
+      adduser midguar
+      usermod -aG sudo midguar
+
+- roxmox primer console again connect container ssh midguar@ ip
+- open bwoser and use container ip ( checking apache 2)
+
+# Preparing the server for the container template
+
+    sudo apt update && sudo apt dist-upgrade -y
+    sudo apt clean
+    sudo apt autoremove
+    sudo rm ssh_host_*
+    ls -l
+    sudo truncate -s 0 /etc/machine-id
+    sudo ln -s /etc/machine-id /var/lib/dbus/machine-id
+    ls -l /var/lib/dbus/machine-id
+    cat /etc/machine-id
+    sudo poweroff
+
+# Create Container Template
+
+- Proxmox Container Right click " Convert to template "
+- select hadwere cd/dvd remove iso
+- secelet cloud init, edit user name and pass 
+- regenerate Image
 
 
+# Cloning Container
 
+- select Template right click Clone " Full Clone "
+- Create Webserver-ct-1
+- Start Webserver-ct-1
+- Connect Webserver-ct-1
 
+      cd /etc/ssh
+      sudo rm ssh_host_*
+      sudo dpkg-reconfigure openssh-server
+
+- Repeat this Webserver-cr-2, use diferent name " webserver-ct-2"
