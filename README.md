@@ -16,13 +16,13 @@
 - Fyle System: ext4
 - Name: Lab_01_Storage_1TB_HDD
 
-# Download ISOs
+# Download ISOs, (when use Raspberry Notice: All ISOs Arm version )
 
 - select Lab_01_Storage_1TB_HDD
 - click ISO Images
 - downloads from URL
 - bwosrer chek link ubuntu server lite
-- paste here URL: https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso?_ga=2.167717566.1222274526.1649071264-1485692266.1646825452
+- paste here URL: https://cdimage.ubuntu.com/releases/20.04/release/ubuntu-20.04.4-live-server-arm64.iso?_ga=2.178253734.204494922.1649949274-1485692266.1646825452
 - Click: Query URL 
 - Click: Downloads
 
